@@ -1,0 +1,29 @@
+<form bindsubmit="submit">
+  <view class="create">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">账号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入账号" name="username"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">密码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input password class="weui-input" placeholder="请输入密码" name="pwd"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">密码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input password class="weui-input" placeholder="请再次输入密码" name="repwd"/>
+      </view>
+    </view>
+    <button class="confirm" form-type="submit">保存</button>
+  </view>
+</form>

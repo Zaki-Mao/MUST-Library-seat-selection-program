@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/info/login/login",
+    "pages/info/info",
+    "pages/info/admin/violation/violation",
+    "pages/info/admin/status/status",
+    "pages/teachingBuilding/teachingBuilding",
+    "pages/info/admin/IDManagement/IDManagement",
+    "pages/teachingBuilding/classroom/classroom",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#cccccc",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#f1f1f1",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/teachingBuilding/teachingBuilding",
+        "text": "图书馆",
+        "iconPath": "images/tabs/library.png",
+        "selectedIconPath": "images/tabs/teachingBuildingSelected.png"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "我的",
+        "iconPath": "images/tabs/mine.png",
+        "selectedIconPath": "images/tabs/mineSelected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

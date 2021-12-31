@@ -1,0 +1,45 @@
+<import src="/templates/template-tip/template-tip" />
+<view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-input weui-cell__bd" style="padding-left: 25%;">
+      <image src="/images/icons/left.png" style="width: 20%; height: 40%;" mode="aspectFill" bindtap="today"></image>
+      {{date}}
+      <image src="/images/icons/right.png" style="width: 20%; height: 40%;" mode="aspectFill" bindtap="nextday"></image>
+    </view>
+  </view>
+
+  <view class="section_gap">
+    <view class="flex-wrp tdTitleColor">
+      <view class="flex-item" style="width: 25%; text-align: center;">座位号\时间</view>
+      <view class="flex-item" style="width: 25%; text-align: center;" wx:for="{{time}}" wx:key="index">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="section section_gap">
+    <scroll-view class="scroll-view_H" scroll-y="true">
+      <!--table开始的地方-->
+      <view class="table" class="scroll-view-item_H">
+        <view class="flex-wrp">
+          <view class="td flex-item time">
+            <block wx:for="{{tablenum[0]}}" wx:key="index">
+              <view class="{{index%2==1?'tdColorLight':'tdColor'}}">{{index + 1}}</view>
+            </block>
+          </view>
+          <block wx:for="{{tablenum}}" wx:key="index" wx:for-index="table_index">
+            <view class="td flex-item">
+              <block wx:for="{{item}}" wx:key="index" wx:for-index="item_index">
+                <view class="{{item_index%2==1?'tdColorLight':'tdColor'}}">
+                  <image data-time_index="{{time_index}}" data-table_index="{{table_index}}" data-item_index="{{item_index}}"
+                    src="/images/icons/{{open?[item]:'S'}}.png" style="width:18px;height:18px;" bindtap="{{open?[item]:'S'}}"></image>
+                </view>
+              </block>
+            </view>
+          </block>
+        </view>
+      </view>
+      <!--table结束的地方-->
+    </scroll-view>
+  </view>
+  <!--可滚动视图区域 end-->
+  <template is="tip"></template>
+</view>

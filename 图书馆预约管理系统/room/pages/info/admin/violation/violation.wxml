@@ -1,0 +1,56 @@
+<import src="/templates/template-tip/template-tip" />
+<view class="infoBox">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">教学楼</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker value="{{index}}" bindchange="bindPickerChangeBuilding" range="{{building}}">
+        <view class="weui-input">{{building[buildingnum]}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">楼层</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker value="{{index}}" bindchange="bindPickerChangeFloor" range="{{floor[buildingnum]}}">
+        <view class="weui-input">{{floor[buildingnum][floornum]}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">教室</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker value="{{index}}" bindchange="bindPickerChangeType" range="{{type[buildingnum][floornum]}}">
+        <view class="weui-input">{{type[buildingnum][floornum][typenum]}}</view>
+      </picker>
+    </view>
+  </view>
+  <view wx:if="{{remind===false}}">
+    <view class="flexWrap">
+      <block wx:for="{{5}}" wx:for-index="tableIdx" wx:key="tableIdx">
+        <view class="unit">
+          <block wx:for="{{list}}" wx:for-item="YN" wx:for-index="seatNum" wx:key="seatNum">
+            <!-- <view>{{seatNum}}</view> -->
+            <block wx:if="{{(5*seatNum+1+tableIdx)<=list.length}}">
+              <image bindtap="{{list[5*seatNum+tableIdx]}}" data-seatNum="{{5*seatNum+tableIdx}}"
+                src="../../../../images/icons/{{list[5*seatNum+tableIdx]}}.png"></image>
+              <view class="weui-cell__bd" id="{{tableIdx}}">{{(seatNum+1)+'-'+(5*seatNum+1+tableIdx)}}
+              </view>
+            </block>
+          </block>
+        </view>
+      </block>
+    </view>
+    <template is="tip"></template>
+  </view>
+  <view class="remind" wx:else="{{remind===true}}">
+    <image src="/images/icons/doraemon.png"></image>
+    <br></br>
+    <text>该教室不存在，换一间教室吧~</text>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+<view>
+  <image class="logo" src="/images/icons/23.png"></image>
+</view>
+<block wx:for="{{listForm}}" wx:key="id" wx:for-index="buildingindex" wx:for-item="building">
+  <view class="kind-list__item">
+    <view class="weui-flex kind-list__item-hd {{building.open ? 'kind-list__item-hd_show' : ''}}"
+      bindtap="kindToggle" data-building="{{building.id}}" data-buildingindex="{{buildingindex}}">
+      <view class="weui-flex__item">{{building.name}}</view>
+      <!-- <image class="kind-list__img " src="/images/icons/2.png"></image> -->
+    </view>
+    <view class="kind-list__item-bd {{building.open ? 'kind-list__item-bd_show' : ''}}">
+      <view class="weui-cells {{building.open ? 'weui-cells_show' : ''}}">
+        <block wx:for-items="{{building.pages}}" wx:for-item="page" wx:for-index="pageindex" wx:key="a">
+          <!-- <navigator url="floor/floor?buildingIdx={{buildingIdx}}&floorIdx={{index}}" class="weui-cell weui-cell_access"> -->
+          <view class="weui-cell weui-cell_access" style="padding-left: 10%;" 
+            bindtap="kindToggle2" data-page="{{page.floor}}" data-pageindex="{{pageindex}}"  data-building="{{building.id}}" data-buildingindex="{{buildingindex}}">
+            <view class="weui-cell__bd">{{page.floor}}</view>
+            <!-- <image style="width:30px;height:30px;" src="/images/icons/2.png"></image>修改图片 -->
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+
+          <view class="kind-list__item-bd {{page.open ? 'kind-list__item-bd_show' : ''}}">
+            <view class="weui-cells {{page.open ? 'weui-cells_show' : ''}}">
+              <block wx:for="{{page.type}}" wx:key="id">
+                <view class="weui-cell weui-cell_access" style="padding-left: 20%;" bindtap="kindToggle3" data-type="{{item}}"  data-page="{{page.floor}}"
+                  data-pageindex="{{pageindex}}"  data-building="{{building.id}}" data-buildingindex="{{buildingindex}}">
+                  <view class="weui-cell__bd">{{item}}</view>
+                  <!-- <image style="width:30px;height:30px;" src="/images/icons/2.png"></image> -->
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </view>
+              </block>
+            </view>
+          </view>
+
+          <!-- </navigator> -->
+        </block>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- <view class="tip">
+  <image src="/images/icons/0.png"></image>
+  <span class="tipText">很多空座</span>
+  <image src="/images/icons/1.png"></image>
+  <span class="tipText">较多空座</span>
+  <image src="/images/icons/2.png"></image>
+  <span class="tipText">较少空座</span>
+  <image src="/images/icons/3.png"></image>
+  <span class="tipText">很少空座</span>
+</view> -->

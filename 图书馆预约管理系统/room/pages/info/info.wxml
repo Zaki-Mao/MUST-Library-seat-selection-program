@@ -1,0 +1,54 @@
+<view class="header">
+  <image class="logo" src="/images/icons/logo.png"></image>
+</view>
+
+<!-- 头像 -->
+<image class="avatar" src="/images/avatars/3.png"></image>
+
+<view class="box" wx:if="{{infoType==='student'}}">
+  <view>
+    用户名：{{username}}
+  </view>
+  <view>
+    预约次数：{{successTimes}}
+  </view>
+  <view>今日预约</view>
+<block wx:if="{{orderinfo.length == 0}}">无</block>
+<block wx:else>
+  <block wx:for-items="{{orderinfo}}" wx:key="a">
+    <view style="padding-left: 5%;padding-bottom: 0%;" bindtap="Open" data-index="{{index}}">{{item.date}}
+      <block wx:if="{{item.time_index==0}}">早上8点-12点</block>
+      <block wx:if="{{item.time_index==1}}">下午12点-18点</block>
+      <block wx:if="{{item.time_index==2}}">早上18点-22点</block>
+    </view>
+
+    <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}" style="padding-bottom: 0;">
+      <view style="padding-left: 10%;">
+        <view>地点：{{item.building}}{{item.floor}}{{item.sittype}}</view>
+        <view>座位：{{item.sit_index + 1}}</view>
+        <view bindtap="delorder" style="padding-left: 20%;" data-id="{{item.id}}" data-sit="{{item.building}}{{item.floor}}{{item.sittype}}{{item.sit_index + 1}}号座位">取消预约</view>
+      </view>
+    </view>
+  </block>
+</block>
+</view>
+<view class="box" wx:else="{{infoType==='admin'}}">
+  <view class="name">
+    用户名：{{username}}
+  </view>
+
+  <!--<view class="box">-->
+  <view class=" weui-cells_show">
+    <block wx:for-items="{{pages}}" wx:for-item="page" wx:key="a">
+      <navigator url="admin/{{pagesUrl[index]}}/{{pagesUrl[index]}}" class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">{{page}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </block>
+  </view>
+  <view class="flex">
+    <button class="weui-btn" bindtap="opentomorrow" type="primary" plain="true" style="width: 40%;">开放明日预约</button>
+    <button class="weui-btn" bindtap="openclass" type="primary" plain="true" style="width: 40%;">开放所有教室</button>
+  </view>
+</view>
+<button type="primary" style="width: 80%;" bindtap="exit">切换账号</button>

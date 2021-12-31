@@ -1,0 +1,45 @@
+<view class="status-box">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">教学楼</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker value="{{index}}" bindchange="bindPickerChange" range="{{building}}">
+        <view class="weui-input">{{building[buildingnum]}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">楼层</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker value="{{index}}" bindchange="bindPickerChangeLou" range="{{floor[buildingnum]}}">
+        <view class="weui-input">{{floor[buildingnum][floornum]}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">教室</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker value="{{index}}" bindchange="bindPickerChangeRoom" range="{{type[buildingnum][floornum]}}">
+        <view class="weui-input">{{type[buildingnum][floornum][typenum]}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">日期</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker value="{{index}}" bindchange="bindPickerChangeDate" range="{{date}}">
+        <view class="weui-input">{{date[Datenum]}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="button-sp-area">
+    <button class="weui-btn" bindtap="confirmInfoAdmin" type="primary" plain="true">保存</button>
+  </view>
+</view>
