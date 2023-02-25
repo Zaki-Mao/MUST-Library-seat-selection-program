@@ -10,21 +10,23 @@ $type = $_GET["type"];
 $date = $_GET["date"];
 
 if ($con) {
-    mysqli_select_db($con, "room"); // 选择要使用的数据库mydatabase
+    mysqli_select_db($con, "room"); // 选择要使用的数据库，这里使用mydatabase
 
     $query = "UPDATE `location` SET `open`=0 WHERE date = '$date'";
 
-    if($building != "全部"){
+    if($building != "全部all"){
         $query = $query . " AND building = '$building'";
     }
-    if ($floor != "全部"){
+    if ($floor != "全部all"){
         $query = $query . " AND floor = '$floor'";
     }
-    if ($type != "全部"){
+    if ($type != "全部all"){
         $query = $query . " AND type = '$type'";
     }
     $result = mysqli_query($con,$query);
 }
+
+
 
 mysqli_close($con);
 
