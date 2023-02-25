@@ -30,6 +30,7 @@
         "iconPath": "images/tabs/library.png",
         "selectedIconPath": "images/tabs/teachingBuildingSelected.png"
       },
+      
       {
         "pagePath": "pages/info/info",
         "text": "我的",
